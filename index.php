@@ -1,6 +1,5 @@
 <?php 
     require_once 'inc/conn.php';
-    
     $req = $pdo->prepare("SELECT * FROM cd16_reservations ");
     $req->execute();
 ?>
@@ -31,7 +30,7 @@
                 <td style="text-align: right;"><?= $res->paye_le; ?></td>
                 <td style="text-align: right;"><?= $res->envoye_le; ?></td>
                 <td style="text-align: right;">
-                    <a href="#" class="btn btn-default btn-xs" data-toggle="modal" data-target="#exampleModal" data-id="<?= $res->id; ?>">A</a>
+                    <a href="#" class="btn btn-default btn-xs" data-toggle="modal" data-target=".bs-example-modal-sm" data-id="<?= $res->id; ?>">A</a>
                     <a href="#" class="btn btn-primary btn-xs">B</a>
                     <a href="#" class="btn btn-success btn-xs">C</a>
                     <a href="#" class="btn btn-info btn-xs">A</a>
@@ -44,28 +43,28 @@
     </table>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-  <div class="modal-dialog" role="document">
+<div class="modal fade bs-example-modal-sm" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModalLabel">Commande</h4>
+        <h4 class="modal-title" id="exampleModalLabel">Réservation</h4>
       </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="recipient-name" class="control-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
+     <form action="" method="POST">
+         <div class="modal-body ">
+            <div class="form-group">
+                <label for="recipient-name" class="control-label">Réservation n°:</label>
+                <input name="Nreserve" id="Nreserve" type="text" class="form-control" id="recipient-name">
+                </div>
+             <strong> Payé le:</strong>
           <div class="form-group">
               <div id="dtPaye"></div>
           </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Submit</button>
-      </div>
+        </div>
+        <div class="modal-footer">
+             <button name="btnPayeLeReset" id="btnPayeLe" type="button" class="btn btn-primary">Reset</button>
+        </div>
+     </form>
     </div>
   </div>
 </div>
