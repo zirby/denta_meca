@@ -1,6 +1,6 @@
 <?php 
     require_once 'inc/conn.php';
-    $req = $pdo->prepare("SELECT * FROM cd16_reservations ");
+    $req = $pdo->prepare("SELECT * FROM cd16_reservations as r, cd16_users as u WHERE r.user_id= u.id ");
     $req->execute();
 ?>
 <?php require 'inc/header.php'; ?>
@@ -8,7 +8,9 @@
 <div class="col-md-12">
     <table class="table table-striped table-hover ">
         <thead>
-            <th>N° reservation</th>
+            <th>N°</th>
+            <th>Nom</th>
+            <th>Prénom</th>
             <th>Zone</th>
             <th>Bloc</th>
             <th>Nb.Places</th>
@@ -22,6 +24,8 @@
             <?php while($res = $req->fetch()): ?>
             <tr>
                 <td style="text-align: left;"><?= $res->id; ?></td>
+                <td style="text-align: left;"><?= $res->lastname; ?></td>
+                <td style="text-align: left;"><?= $res->firstname; ?></td>
                 <td style="text-align: left;"><?= $res->zone; ?></td>
                 <td style="text-align: left;"><?= $res->bloc; ?></td>
                 <td style="text-align: left;"><?= $res->nbplaces; ?></td>
@@ -30,19 +34,17 @@
                 <td style="text-align: right;"><?= $res->paye_le; ?></td>
                 <td style="text-align: right;"><?= $res->envoye_le; ?></td>
                 <td style="text-align: right;">
-                    <a href="#" class="btn btn-default btn-xs" data-toggle="modal" data-target=".bs-example-modal-sm" data-id="<?= $res->id; ?>">A</a>
-                    <a href="#" class="btn btn-primary btn-xs">B</a>
-                    <a href="#" class="btn btn-success btn-xs">C</a>
-                    <a href="#" class="btn btn-info btn-xs">A</a>
-                    <a href="#" class="btn btn-warning btn-xs">B</a>
-                    <a href="#" class="btn btn-danger btn-xs">C</a>
+                    <a href="#" class="btn btn-default btn-xs" data-toggle="modal" data-target=".bs-example-modal-sm" data-id="<?= $res->id; ?>"><span class="glyphicon glyphicon-euro" aria-hidden="true"></span></a>
+                    <a href="#" class="btn btn-success btn-xs" data-toggle="modal" data-target=".bs-envoye-modal-sm" data-id="<?= $res->id; ?>"><span class="glyphicon glyphicon-send" aria-hidden="true"></span></a>
+                    <a href="inc/printReservation.php?id=<?= $res->id; ?>" class="btn btn-info btn-xs" title="imprimer"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                    <a href="#" class="btn btn-danger btn-xs" title="supprimer"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
                 </td>
              </tr>
              <?php endwhile; ?>
         </tbody>
     </table>
 </div>
-<!-- Modal -->
+<!-- Modal PAYE LE-->
 <div class="modal fade bs-example-modal-sm" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
@@ -62,7 +64,33 @@
           </div>
         </div>
         <div class="modal-footer">
-             <button name="btnPayeLeReset" id="btnPayeLe" type="button" class="btn btn-primary">Reset</button>
+             <button  id="btnPayeLeReset" type="button" class="btn btn-primary">Reset</button>
+        </div>
+     </form>
+    </div>
+  </div>
+</div>
+<!-- Modal ENVOYE LE-->
+<div class="modal fade bs-envoye-modal-sm" id="envoyeModal" tabindex="-1" role="dialog" aria-labelledby="envoyeModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="envoyeModalLabel">Envoyer</h4>
+      </div>
+     <form action="" method="POST">
+         <div class="modal-body ">
+            <div class="form-group">
+                <label for="envoye-name" class="control-label">Réservation n°:</label>
+                <input name="NEreserve" id="NEreserve" type="text" class="form-control" id="envoye-name">
+                </div>
+             <strong> Envoyé le:</strong>
+          <div class="form-group">
+              <div id="dtEnvoye"></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+             <button name="btnEnvoyeLeReset" id="btnEnvoyeLeReset" type="button" class="btn btn-primary">Reset</button>
         </div>
      </form>
     </div>
