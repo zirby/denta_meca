@@ -36,11 +36,11 @@
                 <td style="text-align: right;"><?= $res->reserve_le; ?></td>
                 <td style="text-align: right;"><?= $res->paye_le; ?></td>
                 <td style="text-align: right;"><?= $res->envoye_le; ?></td>
-                <td style="text-align: right;"><?= $res->supprime_le; ?></td>
+                <td style="text-align: right;"><?= $res->supprime_le; ?></td> 
                 <td style="text-align: right;">
-                    <a href="#" class="btn btn-default btn-xs" data-toggle="modal" data-target=".bs-example-modal-sm" data-id="<?= $res->id; ?>"><span class="glyphicon glyphicon-euro" aria-hidden="true"></span></a>
-                    <a href="#" class="btn btn-success btn-xs" data-toggle="modal" data-target=".bs-envoye-modal-sm" data-id="<?= $res->id; ?>"><span class="glyphicon glyphicon-send" aria-hidden="true"></span></a>
-                    <a href="inc/printReservation.php?id=<?= $res->id; ?>" class="btn btn-info btn-xs" title="imprimer"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                    <a href="#" class="btn btn-default btn-xs" data-toggle="modal" data-target=".bs-example-modal-sm" data-id="<?= $res->rid; ?>"><span class="glyphicon glyphicon-euro" aria-hidden="true"></span></a>
+                    <a href="#" class="btn btn-success btn-xs" data-toggle="modal" data-target=".bs-envoye-modal-sm" data-id="<?= $res->rid; ?>"><span class="glyphicon glyphicon-send" aria-hidden="true"></span></a>
+                    <a href="inc/printReservation.php?id=<?= $res->rid; ?>" class="btn btn-info btn-xs" title="imprimer"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
                     <a href="#" class="btn btn-danger btn-xs" title="supprimer"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
                 </td>
              </tr>

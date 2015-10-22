@@ -48,7 +48,7 @@ $(document).ready(function(){
     $('#btnPayeLeReset').click( function () {
             var reserv = $('#Nreserve').val();
             $.ajax({
-                url:'inc/doPayeLe.php?reserv='+reserv+'&payele=NULL',
+                url:'inc/doPayeLe.php?reserv='+reserv,
                 success: function(data) {
                         $('#exampleModal').modal('toggle')
                         location.href="index.php";
@@ -64,14 +64,14 @@ $(document).ready(function(){
                 url:'inc/doEnvoyeLe.php?reserv='+reserv+'&envoyele='+dtEnvoyele,
                 success: function(data) {
                         $('#envoyeModal').modal('toggle')
-                        //location.href="index.php";
+                        location.href="index.php";
                  }
             });
     });
     $('#btnEnvoyeLeReset').click( function () {
             var reserv = $('#NEreserve').val();
             $.ajax({
-                url:'inc/doEnvoyeLe.php?reserv='+reserv+'&payele=NULL',
+                url:'inc/doEnvoyeLe.php?reserv='+reserv,
                 success: function(data) {
                         $('#envoyeModal').modal('toggle')
                         location.href="index.php";

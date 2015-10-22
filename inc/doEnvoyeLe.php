@@ -2,7 +2,7 @@
 
 $reserv = $_GET['reserv'];
 $dtEnvoyele = $_GET['envoyele'];
-//echo $dtPayele;
+echo $dtEnvoyele;
     require_once 'conn.php';
     $req = $pdo->prepare("UPDATE cd16_reservations SET envoye_le =? WHERE id= ? ");
     $rs = $req->execute([$dtEnvoyele, $reserv]);
