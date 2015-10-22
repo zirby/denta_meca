@@ -1,6 +1,6 @@
 <?php 
     require_once 'inc/conn.php';
-    $req = $pdo->prepare("SELECT  *, r.id as rid FROM cd16_reservations as r, cd16_users as u WHERE r.user_id= u.id ");
+    $req = $pdo->prepare("SELECT  *, r.id as rid FROM cd16_reservations as r, cd16_users as u WHERE r.user_id= u.id ORDER BY paye_le  ");
     $req->execute();
 ?>
 <?php require 'inc/header.php'; ?>
