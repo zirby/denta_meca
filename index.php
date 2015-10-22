@@ -4,7 +4,14 @@
     $req->execute();
 ?>
 <?php require 'inc/header.php'; ?>
-<h1>Réservations</h1>
+<div class="row">
+    <div class="col-md-6">
+        <h1>Réservations</h1>
+    </div>
+    <div class="col-md-6 text-right" style="margin-top: 21px;">
+        <a href="inc/doSupprimer.php" class="btn btn-danger" title="supprimer"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Suppression automatique</a>
+    </div>
+</div>
 <div class="col-md-12">
     <table class="table table-striped table-hover ">
         <thead>
@@ -26,9 +33,9 @@
             <?php while($res = $req->fetch()): ?>
             <tr>
                 <td style="text-align: left;"><?= $res->rid; ?></td>
-                <td style="text-align: left;"><?= $res->lastname; ?></td>
+                <td style="text-align: left;color:red;"><?= strtoupper($res->lastname); ?></td>
                 <td style="text-align: left;"><?= $res->firstname; ?></td>
-                <td style="text-align: left;"><?= $res->jour; ?></td>
+                <td style="text-align: left;color:green;"><?= $res->jour; ?></td>
                 <td style="text-align: left;"><?= $res->zone; ?></td>
                 <td style="text-align: left;"><?= $res->bloc; ?></td>
                 <td style="text-align: left;"><?= $res->nbplaces; ?></td>
@@ -41,7 +48,7 @@
                     <a href="#" class="btn btn-default btn-xs" data-toggle="modal" data-target=".bs-example-modal-sm" data-id="<?= $res->rid; ?>"><span class="glyphicon glyphicon-euro" aria-hidden="true"></span></a>
                     <a href="#" class="btn btn-success btn-xs" data-toggle="modal" data-target=".bs-envoye-modal-sm" data-id="<?= $res->rid; ?>"><span class="glyphicon glyphicon-send" aria-hidden="true"></span></a>
                     <a href="inc/printReservation.php?id=<?= $res->rid; ?>" class="btn btn-info btn-xs" title="imprimer"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                    <a href="#" class="btn btn-danger btn-xs" title="supprimer"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
+                    <a href="inc/doAccepteLe.php?reserv=<?= $res->rid; ?>" class="btn btn-danger btn-xs" title="accepter"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
                 </td>
              </tr>
              <?php endwhile; ?>
