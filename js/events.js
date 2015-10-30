@@ -14,12 +14,7 @@ function date2sql(laDate){
 
 
 $(document).ready(function(){
-    $('#example-getting-started').multiselect({
-        checkboxName: 'multiselect[]',
-        onChange: function(option, checked, select) {
-                alert('Changed option ' + $('option').val());
-        }
-    });
+    
     $('#exampleModal').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget); // Button that triggered the modal
       var recipient = button.data('id'); // Extract info from data-* attributes
@@ -46,6 +41,12 @@ $(document).ready(function(){
       var modal = $(this);
       //modal.find('.modal-title').text('Commande ' + recipient)
       modal.find('.modal-body input').val(recipient);
+      $('#example-getting-started').multiselect({
+            onChange: function(option, checked, select) {
+                alert('Changed option ' + $(option).val() + '.');
+            }
+        });
+       $('#example-getting-started').multiselect('dataprovider', options);
     });
 
     $('#dtPaye').datepicker()
