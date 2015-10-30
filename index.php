@@ -109,6 +109,7 @@
   </div>
 </div>
 <!-- Modal doPlaces-->
+
 <div class="modal fade bs-places-modal-sm" id="placesModal" tabindex="-1" role="dialog" aria-labelledby="placesModalLabel">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
@@ -116,7 +117,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="envoyeModalLabel">Attribuer les places</h4>
       </div>
-     <form action="" method="POST">
+     <form action="post.php" method="POST">
          <div class="modal-body ">
             <div class="form-group">
                 <label for="NPreserve" class="control-label">Réservation n°:</label>
@@ -124,7 +125,7 @@
                 </div>
              <strong> Les places:</strong>
           <div class="form-group">
-            <select id="example-getting-started" multiple="multiple">
+            <select id="example-getting-started"  multiple="multiple">
                 <option value="cheese">Cheese</option>
                 <option value="tomatoes">Tomatoes</option>
                 <option value="mozarella">Mozzarella</option>
@@ -135,7 +136,7 @@
           </div>
         </div>
         <div class="modal-footer">
-             <button name="btnDoPlaces" id="btnDoPlaces" type="button" class="btn btn-primary">Enregistrer</button>
+            <button name="btnDoPlaces" id="btnDoPlaces" type="submit" class="btn btn-primary">Enregistrer</button>
         </div>
      </form>
     </div>
