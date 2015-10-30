@@ -48,6 +48,7 @@
                     <a href="#" class="btn btn-default btn-xs" data-toggle="modal" data-target=".bs-example-modal-sm" data-id="<?= $res->rid; ?>"><span class="glyphicon glyphicon-euro" aria-hidden="true"></span></a>
                     <a href="#" class="btn btn-success btn-xs" data-toggle="modal" data-target=".bs-envoye-modal-sm" data-id="<?= $res->rid; ?>"><span class="glyphicon glyphicon-send" aria-hidden="true"></span></a>
                     <a href="inc/printReservation.php?id=<?= $res->rid; ?>" class="btn btn-info btn-xs" title="imprimer"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                    <a href="#" class="btn btn-success btn-xs" title="attribuer les places" data-toggle="modal" data-target=".bs-places-modal-sm" data-id="<?= $res->rid; ?>"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
                     <a href="inc/doAccepteLe.php?reserv=<?= $res->rid; ?>" class="btn btn-danger btn-xs" title="accepter"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
                 </td>
              </tr>
@@ -102,6 +103,39 @@
         </div>
         <div class="modal-footer">
              <button name="btnEnvoyeLeReset" id="btnEnvoyeLeReset" type="button" class="btn btn-primary">Reset</button>
+        </div>
+     </form>
+    </div>
+  </div>
+</div>
+<!-- Modal doPlaces-->
+<div class="modal fade bs-places-modal-sm" id="placesModal" tabindex="-1" role="dialog" aria-labelledby="placesModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="envoyeModalLabel">Attribuer les places</h4>
+      </div>
+     <form action="" method="POST">
+         <div class="modal-body ">
+            <div class="form-group">
+                <label for="NPreserve" class="control-label">Réservation n°:</label>
+                <input name="NPreserve" id="NPreserve" type="text" class="form-control" >
+                </div>
+             <strong> Les places:</strong>
+          <div class="form-group">
+            <select id="example-getting-started" multiple="multiple">
+                <option value="cheese">Cheese</option>
+                <option value="tomatoes">Tomatoes</option>
+                <option value="mozarella">Mozzarella</option>
+                <option value="mushrooms">Mushrooms</option>
+                <option value="pepperoni">Pepperoni</option>
+                <option value="onions">Onions</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+             <button name="btnDoPlaces" id="btnDoPlaces" type="button" class="btn btn-primary">Enregistrer</button>
         </div>
      </form>
     </div>

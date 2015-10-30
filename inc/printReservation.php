@@ -66,7 +66,7 @@ $envoye_le = SQL2date($row->envoye_le);
         </div>
         <div class="bloc_principal">
         Madame, Monsieur,<br />
-        Nous avons bien reçu votre paiement de <?= $montant?> € et avons le plaisir de faire parvenir:
+        Nous avons bien reçu votre paiement de <?= $montant?> € et avons le plaisir de vous faire parvenir:
         <ul>
             <li><?= $nbplaces?> place(s)</li>
             <li>Zone: <?= $emplacement?></li>
