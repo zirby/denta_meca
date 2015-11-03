@@ -35,12 +35,14 @@ $(document).ready(function(){
     });
     $('#placesModal').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget); // Button that triggered the modal
-      var recipient = button.data('id'); // Extract info from data-* attributes
-      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+      var recipient = button.data('id'); 
+      var jour = button.data('jour');
+      var nbplaces = button.data('nbplaces');
       var modal = $(this);
       //modal.find('.modal-title').text('Commande ' + recipient)
       modal.find('.modal-body input').val(recipient);
+      modal.find('.modal-body input[name="jour"]').val(jour);
+      modal.find('.modal-body input[name="nbplaces"]').val(nbplaces);
       $.ajax({
             url: "inc/doPlaces.php",
             method: "POST",
@@ -48,11 +50,11 @@ $(document).ready(function(){
             dataType: "json"          
         })
         .done(function( data ) {
-            $('#example-getting-started').multiselect('dataprovider', data);
+            $('#selPlaces').multiselect('dataprovider', data);
         });
-      $('#example-getting-started').multiselect({
+      $('#selPlaces').multiselect({
             onChange: function(option, checked, select) {
-                alert('Changed option ' + $(option).val() + '.');
+                //alert('Changed option ' + $(option).val() + '.');
             }
         });
        
@@ -81,6 +83,18 @@ $(document).ready(function(){
             });
         
     });
+    $('#btnDoPlaces').click( function () {
+            //var reserv = $('#Nreserve').val();
+            $.ajax({
+                url:'doPlacesReserv.php',
+                success: function(data) {
+                        $('#placesModal').modal('toggle')
+                        location.href="index.php";
+                 }
+            });
+        
+    });
+    
     $('#dtEnvoye').datepicker()
         .on('changeDate', function(e) {
             var dtEnvoyele = date2sql(e.date);

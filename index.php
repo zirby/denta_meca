@@ -1,6 +1,6 @@
 <?php 
     require_once 'inc/conn.php';
-    $req = $pdo->prepare("SELECT  *, r.id as rid FROM cd16_reservations as r, cd16_users as u WHERE r.user_id= u.id ORDER BY paye_le  ");
+    $req = $pdo->prepare("SELECT  *, r.id as rid FROM cd16_reservations as r, cd16_users as u WHERE r.user_id= u.id ORDER BY r.id DESC  ");
     $req->execute();
 ?>
 <?php require 'inc/header.php'; ?>
@@ -48,7 +48,7 @@
                     <a href="#" class="btn btn-default btn-xs" data-toggle="modal" data-target=".bs-example-modal-sm" data-id="<?= $res->rid; ?>"><span class="glyphicon glyphicon-euro" aria-hidden="true"></span></a>
                     <a href="#" class="btn btn-success btn-xs" data-toggle="modal" data-target=".bs-envoye-modal-sm" data-id="<?= $res->rid; ?>"><span class="glyphicon glyphicon-send" aria-hidden="true"></span></a>
                     <a href="inc/printReservation.php?id=<?= $res->rid; ?>" class="btn btn-info btn-xs" title="imprimer"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                    <a href="#" class="btn btn-success btn-xs" title="attribuer les places" data-toggle="modal" data-target=".bs-places-modal-sm" data-id="<?= $res->rid; ?>"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+                    <a href="#" class="btn btn-success btn-xs" title="attribuer les places" data-toggle="modal" data-target=".bs-places-modal-sm" data-id="<?= $res->rid; ?>" data-jour="<?= $res->jour; ?>" data-nbplaces="<?= $res->nbplaces; ?>"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
                     <a href="inc/doAccepteLe.php?reserv=<?= $res->rid; ?>" class="btn btn-danger btn-xs" title="accepter"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
                 </td>
              </tr>
@@ -117,23 +117,24 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="envoyeModalLabel">Attribuer les places</h4>
       </div>
-     <form action="post.php" method="POST">
+     <form action="inc/doPlacesReserv.php" method="POST">
          <div class="modal-body ">
             <div class="form-group">
                 <label for="NPreserve" class="control-label">Réservation n°:</label>
                 <input name="NPreserve" id="NPreserve" type="text" class="form-control" >
-                </div>
-             <strong> Les places:</strong>
-          <div class="form-group">
-            <select id="example-getting-started"  multiple="multiple">
-                <option value="cheese">Cheese</option>
-                <option value="tomatoes">Tomatoes</option>
-                <option value="mozarella">Mozzarella</option>
-                <option value="mushrooms">Mushrooms</option>
-                <option value="pepperoni">Pepperoni</option>
-                <option value="onions">Onions</option>
-            </select>
-          </div>
+            </div>
+            <div class="form-group">
+                <label for="jour" class="control-label">Jour:</label>
+                <input name="jour" id="jour" type="text" class="form-control" >
+            </div>            
+            <div class="form-group">
+                <label for="nbplaces" class="control-label">Nb de Places:</label>
+                <input name="nbplaces" id="nbplaces" type="text" class="form-control" >
+            </div>            
+            <strong> Les places:</strong>
+            <div class="form-group">
+                <select id="selPlaces" name="selPlaces[]"  multiple="multiple"></select>
+            </div>
         </div>
         <div class="modal-footer">
             <button name="btnDoPlaces" id="btnDoPlaces" type="submit" class="btn btn-primary">Enregistrer</button>

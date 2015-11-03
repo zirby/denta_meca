@@ -37,9 +37,10 @@
           <ul class="nav navbar-nav">
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
+            <li><a href="index.php">Réservation</a></li>
+            <li><a href="ven04.php">VEN04</a></li>
+            <li><a href="sam05.php">SAM05</a></li>
+            <li><a href="dim06.php">DIM06</a></li>
           </ul>
           <form class="navbar-form navbar-right" role="search">
             <div class="form-group">
