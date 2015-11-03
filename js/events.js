@@ -41,12 +41,21 @@ $(document).ready(function(){
       var modal = $(this);
       //modal.find('.modal-title').text('Commande ' + recipient)
       modal.find('.modal-body input').val(recipient);
+      $.ajax({
+            url: "inc/doPlaces.php",
+            method: "POST",
+            data: { reserv : recipient },
+            dataType: "json"          
+        })
+        .done(function( data ) {
+            $('#example-getting-started').multiselect('dataprovider', data);
+        });
       $('#example-getting-started').multiselect({
             onChange: function(option, checked, select) {
                 alert('Changed option ' + $(option).val() + '.');
             }
         });
-       $('#example-getting-started').multiselect('dataprovider', options);
+       
     });
 
     $('#dtPaye').datepicker()
