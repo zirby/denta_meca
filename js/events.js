@@ -118,5 +118,13 @@ $(document).ready(function(){
             });
         
     });
-    
+    $('#btnSuppAuto').click( function () {
+            $.ajax({
+                url:'inc/doSupprimer.php',
+                success: function(data) {
+                        location.href="index.php";
+                 }
+            });
+        
+    });    
 });

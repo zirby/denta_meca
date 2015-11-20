@@ -2,16 +2,53 @@
     require_once 'inc/conn.php';
     $req = $pdo->prepare("SELECT  *, r.id as rid FROM cd16_reservations as r, cd16_users as u WHERE r.user_id= u.id ORDER BY r.id DESC  ");
     $req->execute();
+
+if(isset($_POST['btnSearchReserv'])){
+    $req = $pdo->prepare("SELECT  *, r.id as rid FROM cd16_reservations as r, cd16_users as u WHERE r.user_id= u.id AND r.id=".$_POST['searchReserv']." ORDER BY r.id DESC  ");
+    $req->execute();    
+}
+if(isset($_POST['btnSearchNom'])){
+    $req = $pdo->prepare("SELECT  *, r.id as rid FROM cd16_reservations as r, cd16_users as u WHERE r.user_id= u.id AND u.lastname like '".$_POST['searchNom']."%' ORDER BY r.id DESC  ");
+    $req->execute();    
+}
 ?>
 <?php require 'inc/header.php'; ?>
-<div class="row">
-    <div class="col-md-6">
-        <h1>Réservations</h1>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Réservations</a>
     </div>
-    <div class="col-md-6 text-right" style="margin-top: 21px;">
-        <a href="inc/doSupprimer.php" class="btn btn-danger" title="supprimer"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Suppression automatique</a>
-    </div>
-</div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><button id="btnSuppAuto" type="button" class="btn btn-danger navbar-btn"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Suppression automatique</button></li>
+      </ul>
+        <form action="" method="POST" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+            <input name="searchNom" type="text" class="form-control" placeholder="Search">
+        </div>
+            <button name="btnSearchNom" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></button>
+      </form>
+      <form action="" method="POST" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input name="searchReserv" type="text" class="form-control" placeholder="Search">
+        </div>
+          <button name="btnSearchReserv" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></button>
+      </form>
+        
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 <div class="col-md-12">
     <table class="table table-striped table-hover ">
         <thead>

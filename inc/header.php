@@ -37,17 +37,11 @@
           <ul class="nav navbar-nav">
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="index.php">Réservation</a></li>
+            <li><a href="index.php">Réservations</a></li>
             <li><a href="ven04.php">VEN04</a></li>
             <li><a href="sam05.php">SAM05</a></li>
             <li><a href="dim06.php">DIM06</a></li>
           </ul>
-          <form class="navbar-form navbar-right" role="search">
-            <div class="form-group">
-              <input class="form-control" placeholder="Search" type="text">
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>
         </div>
       </div>
     </nav>
