@@ -2,7 +2,6 @@
     require_once 'inc/conn.php';
     $req = $pdo->prepare("SELECT  * FROM ouvrages ");
     $req->execute();
-    $ouvr = $req->fetchAll();
 
 
 ?>
@@ -25,7 +24,7 @@
       <ul class="nav navbar-nav">
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><button id="btnSuppAuto" type="button" class="btn btn-success navbar-btn"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter un ouvrage</button></li>
+        <li><button id="btnModalInsert" type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target=".bs-insert-modal-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter un ouvrage</button></li>
       </ul>
         <form action="" method="POST" class="navbar-form navbar-right" role="search">
         <div class="form-group">
@@ -57,22 +56,27 @@
             <th style="text-align: right;">Action</th>
         </thead>
         <tbody>
-            <?php while($res = $req->fetch()): ?>
+            <?php while($ouvr = $req->fetch()): ?>
             <tr>
                 <td style="text-align: left;"><?= $ouvr->id; ?></td>
                 <td style="text-align: left;"><?= $ouvr->date_ouvr; ?></td>
                 <td style="text-align: left;"><?= $ouvr->note_envoi; ?></td>
                 <td style="text-align: left;"><?= $ouvr->patient; ?></td>
+                <td style="text-align: left;"><?= $ouvr->ouvrage; ?></td>
+                <td style="text-align: right;"><?= $ouvr->qui; ?></td>
                 <td style="text-align: right;"><?= $ouvr->asd; ?></td>
                 <td style="text-align: right;"><?= $ouvr->tvac; ?> €</td>
                 <td style="text-align: right;">
-                    <a href="#" class="btn btn-success btn-xs" title="Modifier" data-toggle="modal" data-target=".bs-places-modal-sm"
-                            data-id="<?= $res->id; ?>"
-                            data-equipe="<?= $res->equipe; ?>"
-                            data-serie="<?= $res->serie; ?>"
-                            data-capitaine="<?= $res->capitaine; ?>"
-                            data-gsm="<?= $res->gsm; ?>"                       
-                            title="Modifier une catégorie"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                    <a href="#" class="btn btn-success btn-xs" data-toggle="modal" data-target=".bs-update-modal-sm"
+                            data-id="<?= $ouvr->id; ?>"
+                            data-dateouvr="<?= $ouvr->date_ouvr; ?>"
+                            data-noteenvoi="<?= $ouvr->note_envoi; ?>"
+                            data-patient="<?= $ouvr->patient; ?>"
+                            data-ouvrage="<?= $ouvr->ouvrage; ?>"
+                            data-qui="<?= $ouvr->qui; ?>"
+                            data-asd="<?= $ouvr->asd; ?>"
+                            data-tvac="<?= $ouvr->tvac; ?>"                       
+                            title="Modifier l' ouvrage"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
                     <a href="inc/doDelete.php?id=<?= $ouvr->id; ?>" class="btn btn-danger btn-xs" title="Supprimer"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
                 </td>
              </tr>
@@ -82,5 +86,6 @@
 </div>
 
 <?php require 'inc/modalUpdate.php';?>
+<?php require 'inc/modalInsert.php';?>
 
 <?php require 'inc/footer.php';

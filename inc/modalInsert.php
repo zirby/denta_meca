@@ -26,6 +26,10 @@
                 <input name="insOuvrage" id="insOuvrage" type="text" class="form-control" >
             </div>            
             <div class="form-group">
+                <label for="insQui" class="control-label">Qui?:</label>
+                <input name="insQui" id="insQui" type="text" class="form-control" >
+            </div>            
+            <div class="form-group">
                 <label for="insAsd" class="control-label">N° ASD:</label>
                 <input name="insAsd" id="insAsd" type="text" class="form-control" >
             </div>            

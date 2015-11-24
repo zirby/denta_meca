@@ -5,7 +5,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="envoyeModalLabel">Modifier l'Ouvrage</h4>
+        <h4 class="modal-title" id="envoyeModalLabel">Modifier l'ouvrage</h4>
       </div>
      <form action="inc/doUpdate.php" method="POST">
          <div class="modal-body ">
@@ -28,6 +28,10 @@
             <div class="form-group">
                 <label for="updOuvrage" class="control-label">Ouvrage:</label>
                 <input name="updOuvrage" id="updOuvrage" type="text" class="form-control" >
+            </div>            
+            <div class="form-group">
+                <label for="updQui" class="control-label">Qui?:</label>
+                <input name="updQui" id="updQui" type="text" class="form-control" >
             </div>            
             <div class="form-group">
                 <label for="updAsd" class="control-label">N° ASD:</label>
