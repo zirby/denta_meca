@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>CD2016-Admin</title>
+    <title>DENTA_MECA</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap-3.3.2.min.css">
@@ -30,17 +30,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">CD 2016 - Administration</a>
+          <a class="navbar-brand" href="#">Gestion Labo Dentaire</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
           <ul class="nav navbar-nav">
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="index.php">Réservations</a></li>
-            <li><a href="ven04.php">VEN04</a></li>
-            <li><a href="sam05.php">SAM05</a></li>
-            <li><a href="dim06.php">DIM06</a></li>
+            <li><a href="index.php">Bilan</a></li>
           </ul>
         </div>
       </div>
