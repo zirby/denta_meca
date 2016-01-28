@@ -25,10 +25,16 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><button id="btnModalInsert" type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target=".bs-insert-modal-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter un ouvrage</button></li>
+        <li></li>
+
       </ul>
         <form action="" method="POST" class="navbar-form navbar-right" role="search">
         <div class="form-group">
-            <input name="searchNom" type="text" class="form-control" placeholder="Search">
+            <select class="selectpickert">
+            <option>Mustard</option>
+            <option>Ketchup</option>
+            <option>Relish</option>
+            </select>
         </div>
             <button name="btnSearchNom" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></button>
       </form>

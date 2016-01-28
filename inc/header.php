@@ -10,7 +10,7 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap-3.3.2.min.css">
     <link rel="stylesheet" href="css/bootstrap-datepicker3.standalone.min.css">
-    <link rel="stylesheet" href="css/bootstrap-multiselect.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.4/css/bootstrap-select.min.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
