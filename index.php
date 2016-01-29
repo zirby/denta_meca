@@ -1,7 +1,9 @@
 <?php 
     require_once 'inc/conn.php';
-    $req = $pdo->prepare("SELECT  * FROM ouvrages ");
-    $req->execute();
+    $mois = isset($_POST['selectMois']) ? intval($_POST['selectMois']) : date(n); 
+    $an = isset($_POST['selectAn']) ? intval($_POST['selectAn']) : date(Y); 
+    $req = $pdo->prepare("SELECT  * FROM ouvrages WHERE MONTH(date_ouvr)=? AND YEAR(date_ouvr)=?");
+    $req->execute([$mois, $an]);
 
 
 ?>
@@ -30,19 +32,38 @@
       </ul>
         <form action="" method="POST" class="navbar-form navbar-right" role="search">
         <div class="form-group">
-            <select class="selectpickert">
-            <option>Mustard</option>
-            <option>Ketchup</option>
-            <option>Relish</option>
+            <select id="selectMois" name="selectMois" class="selectpicker" title="Mois...">
+                <option value="1">Janvier</option>
+                <option value="2">Février</option>
+                <option value="3">Mars</option>
+                <option value="4">Avril</option>
+                <option value="5">Mai</option>
+                <option value="6">Juin</option>
+                <option value="7">Juillet</option>
+                <option value="8">Août</option>
+                <option value="9">Septembre</option>
+                <option value="10">Octobre</option>
+                <option value="11">Novembre</option>
+                <option value="12">Décembre</option>
             </select>
         </div>
-            <button name="btnSearchNom" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></button>
-      </form>
-      <form action="" method="POST" class="navbar-form navbar-right" role="search">
         <div class="form-group">
-          <input name="searchReserv" type="text" class="form-control" placeholder="Search">
+            <select id="selectAn" name="selectAn" class="selectpicker selectAn"title="Année...">
+                <option value="2012">2012</option>
+                <option value="2013">2013</option>
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+            </select>
         </div>
-          <button name="btnSearchReserv" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></button>
+      <button id="btnSubmit" name="btnSubmit" type="submit" class="btn btn-default" ><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
       </form>
         
     </div><!-- /.navbar-collapse -->

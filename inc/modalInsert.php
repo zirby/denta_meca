@@ -1,4 +1,4 @@
-<!-- Modal Update-->
+<!-- Modal Insert-->
 
 <div class="modal fade bs-insert-modal-sm" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="insertModalLabel">
   <div class="modal-dialog modal-sm" role="document">

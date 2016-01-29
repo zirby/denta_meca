@@ -1,4 +1,6 @@
 $(document).ready(function(){
+
+    
    
     $('#updateModal').on('show.bs.modal', function (event) {
       var modalInput = $(event.relatedTarget); // Button that triggered the modal
@@ -67,5 +69,5 @@ $(document).ready(function(){
         
     });
 
-    
+
 });
